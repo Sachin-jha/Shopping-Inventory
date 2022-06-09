@@ -1,0 +1,46 @@
+<template>
+    <div class="slds-card slds-var-p-around_x-small">
+        <div style="font-weight: bold;text-transform: uppercase; text-align: center;">Customer Portal</div>        
+        <template if:true={visibleItem}>            
+        <lightning-layout multiple-rows="true" >
+            <template for:each={visibleItem} for:item="lst">               
+                <lightning-layout-item key={lst.Id} padding='around-small' size='12' small-device-size='6' medium-device-size='4' large-device-size='4'>
+                    <div style="padding: 8px;background-color:#ffffff;border-radius: 0.25rem;">
+                        <img
+                            src={lst.Image__c}
+                            class="slds-align_absolute-center"
+                            style="height: 100px; pointer-events: none;"
+                        />
+                        <div>
+                            <p class="slds-align_absolute-center" style="font-weight: bold;text-transform: uppercase;">
+                                {lst.Name}
+                            </p>                            
+                        </div> 
+                        <div>
+                            <p class="slds-align_absolute-center">
+                                MRP : ${lst.Selling_Price__c}
+                            </p>                            
+                        </div>
+                        <div>
+                            <!--<c-counter ondecrement={numberDecrese} onincrement={numberIncrese}></c-counter>-->
+                        </div>
+                        <div>
+                            <p class="slds-align_absolute-center">
+                                <lightning-button variant="Brand" label="Add to Cart" 
+                                                  value={lst.Name} onclick={handleAddToCart}>                                    
+                                </lightning-button> 
+                            </p>                            
+                        </div>
+                                               
+                    </div>                    
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+        </template>
+
+        <div slot="footer" class="slds-var-m-vertical_medium">
+            <c-pagination records={totalItem} onupdate={updateItemHandler}></c-pagination>
+        </div>
+        
+    </div>    
+</template>

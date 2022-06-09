@@ -1,0 +1,12 @@
+<template>
+    <div>
+        <div class="slds-align_absolute-center">
+            <lightning-button variant="Base" label="-" style="font-size: 20px;" onclick={handleDecrement} disabled={disableOnZero}>                                    
+            </lightning-button> 
+            &nbsp;&nbsp; <p>{ctr}</p> &nbsp;&nbsp;
+            <lightning-button variant="Base" label="+" style="font-size: 20px;" onclick={handleIncrement}>                                    
+            </lightning-button> 
+        </div>                            
+    </div>    
+    
+</template>

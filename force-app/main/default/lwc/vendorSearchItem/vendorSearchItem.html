@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Filters" icon-name="utility:filterList">
+        <div class="slds-var-m-horizontal_medium">
+            <lightning-input type="search" 
+                             placeholder="Search By Item Name" 
+                             onchange={handleSearch}>
+            </lightning-input>
+        </div>
+        <div class="slds-var-m-horizontal_medium">
+            <select class="slds-select" onchange={handleCategory}>
+                <option><b>Select Category</b></option>
+                    <option value="Food Product">Food Product</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Electrical">Electronic Item</option>
+            </select>
+        </div>
+    </lightning-card>
+</template>

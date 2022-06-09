@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="List of selected items">
+        <template if:true={processedCart}>            
+            <table>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Manufacture Date</th>
+                    <th>Expired Date</th>
+                    <th>MRP</th>
+                    <th>Quantity</th>
+                </tr>                    
+                <template for:each={processedCart} for:item="c" for:index="index"> 
+                    <tr key={c.Id}>
+                        <td>{c.Name}</td>
+                        <td>{c.Manufactured_Date__c}</td>
+                        <td>{c.Expire_Date__c}</td>
+                        <td>${c.Selling_Price__c}</td>
+                        <td><c-counter ondecrement={numberDecrese} onincrement={numberIncrese}></c-counter></td>
+                        <td><lightning-button label="Remove" variant="Neutral" onclick={handleRemoveItem}></lightning-button></td>
+                    </tr>                                      
+                </template>                 
+            </table> 
+            <div>
+                <p style="font-weight: bold;text-transform: uppercase;">Total:- {totalAmountInCart}</p>
+            </div>
+            <div style="text-align: center;">
+                <lightning-button variant="Brand" label="Checkout" onclick={handleCheckout} disabled={disableButton}></lightning-button>
+            </div> 
+            <div style="text-align: right;">
+                <lightning-input placeholder="Enter Vendor Email for sending Invoice Receipt" disabled={btnDisable} onchange={handleEmail}></lightning-input>
+                <lightning-button variant="Success" label="Generate Invoice" onclick={handleInvoice} disabled={btnDisable}></lightning-button>
+            </div>  
+            
+        </template>
+        <!--<template for:each={itemCount} for:item="item" >
+            {item}
+        </template>-->
+        </lightning-card> 
+</template> 
